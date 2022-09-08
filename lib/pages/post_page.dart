@@ -136,11 +136,11 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                         InkWell(
                           onDoubleTap: () => print('Like post'),
                           child: Container(
-                            margin: EdgeInsets.all(10.0),
+                            margin: EdgeInsets.all(00.0),
                             width: double.infinity,
                             height: 400.0,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25.0),
+                              borderRadius: BorderRadius.circular(0.0),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black45,
@@ -156,7 +156,7 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -170,7 +170,7 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                                         onPressed: () => print('Like post'),
                                       ),
                                       Text(
-                                        '2,515',
+                                        '204',
                                         style: TextStyle(
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w600,
@@ -178,18 +178,18 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(width: 20.0),
+                                  SizedBox(width: 10.0),
                                   Row(
                                     children: <Widget>[
                                       IconButton(
-                                        icon: Icon(Icons.chat),
+                                        icon: Icon(Icons.message_outlined),
                                         iconSize: 30.0,
                                         onPressed: () {
                                           print('Chat');
                                         },
                                       ),
                                       Text(
-                                        '350',
+                                        '10',
                                         style: TextStyle(
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w600,
@@ -269,7 +269,7 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                   borderSide: BorderSide(color: Colors.grey),
                 ),
                 contentPadding: EdgeInsets.all(20.0),
-                hintText: 'Add your massage',
+                hintText: 'Add your message',
                 prefixIcon: Container(
                   margin: EdgeInsets.all(4.0),
                   width: 48.0,
@@ -295,22 +295,27 @@ class _ViewPostScreenState extends State<ViewPostScreen> {
                     ),
                   ),
                 ),
-                // suffixIcon: Container(
-                //   margin: EdgeInsets.only(right: 4.0),
-                //   width: 70.0,
-                //   child: FlatButton(
-                //     shape: RoundedRectangleBorder(
-                //       borderRadius: BorderRadius.circular(30.0),
-                //     ),
-                //     color: Colors.blueAccent,
-                //     onPressed: () => print('Post'),
-                //     child: Icon(
-                //       Icons.send_outlined,
-                //       size: 20.0,
-                //       color: Colors.white,
-                //     ),
-                //   ),
-                // ),
+                suffixIcon: Container(
+                  margin: EdgeInsets.only(right: 4.0),
+                  width: 70.0,
+                  child: TextButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.hovered))
+                              return Colors.blue.withOpacity(0.04);
+                            if (states.contains(MaterialState.focused) ||
+                                states.contains(MaterialState.pressed))
+                              return Colors.blue.withOpacity(0.12);
+                            return null; // Defer to the widget's default.
+                          },
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text('Send')),
+                ),
               ),
             ),
           ),
